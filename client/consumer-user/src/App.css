@@ -2,37 +2,30 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: rgb(254, 254, 254); /* Replace with the desired background color */
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+/* Style the "Paketti" heading */
+.App-header h1 {
+  font-size: 2.5rem; /* Increase the font size */
+  color: #007bff; /* Change the font color (blue in this example) */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Style the "Sign In" and "Sign Up" buttons */
+.buttons button {
+  background-color: #007bff; /* Button background color (blue in this example) */
+  color: #fff; /* Button text color (white in this example) */
+  padding: 10px 20px; /* Add padding to the buttons */
+  margin: 10px 0; /* Add margin to separate the buttons */
+  border: none; /* Remove the button border */
+  cursor: pointer; /* Show a pointer cursor on hover */
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.buttons button:hover {
+  background-color: #0056b3; /* Change the button background color on hover */
 }
