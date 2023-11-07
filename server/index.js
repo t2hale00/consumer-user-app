@@ -2,27 +2,36 @@ const express   = require('express');
 const app       = express();
 const port      = 3000;
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-});
+const mysql2 = require ('mysql2/promise');
 
-app.get('/', (req, res) => {
-    res.send('Hello World Wide Web!');
-}); 
+async function main () {
 
+    const connection = await mysql2.createConnection({host:'localhost', user: 'root', password: 'LEAHmae185!!!' ,  database: 'consumerdb'});
 
-
-//route to adding new customer user
-app.post('/newscustomeruser', (req,res) => {
-    res.send ('Hello new user!')
-});
-
-//route to get all customer user parcels
-app.get('/allparcels', (req,res) => {
-    res.send ('All parcels')
-});
-
-//search customer parcels by customer username and parcel id
-
+  
+    app.listen(port, () => {
+        console.log(`Example app listening at http://localhost:${port}`);
+    });
+    
+    app.post('/signup', async (req, res) => {
+        const { username, password } = req.body;
+      
+        // Hash the password
+        const hashedPassword = await bcrypt.hash(password, 10);
+      
+        // Save user data to the database
+        try {
+          const [result] = await db.query(
+            'INSERT INTO users (username, password) VALUES (?, ?)',
+            [username, hashedPassword]
+          );
+          res.status(201).json({ message: 'User registered successfully' });
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({ error: 'Registration failed' });
+        }
+      });
+      
+};
 
 
