@@ -12,28 +12,31 @@ function Signup() {
       password: password,
     };
 
-    // Make a POST request to your registration endpoint
-    try {
-      const response = await fetch('YOUR_REGISTRATION_API_ENDPOINT', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
+    // Send a POST request to the server's signup endpoint
+  try {
+    const response = await fetch('http://localhost:3000/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    });
 
-      if (response.ok) {
-        // Registration was successful, you can redirect or set user state here
-        console.log('User signed up successfully');
-      } else {
-        // Registration failed, handle errors here
-        console.error('Sign-up failed');
-      }
-    } catch (error) {
-      console.error('An error occurred:', error);
+    if (response.status === 201) {
+      // User registration was successful
+      console.log('User registered successfully');
+      // You can redirect the user to a different page or display a success message here.
+    } else {
+      // User registration failed
+      const data = await response.json();
+      console.log('Registration failed:', data.error);
+      // You can display an error message to the user in the HTML if needed.
     }
-  };
-
+  } catch (error) {
+    console.error('An error occurred:', error);
+    // Handle any network or server-related errors here.
+  }
+};
   return (
     <div>
       <h2>Sign Up</h2>
