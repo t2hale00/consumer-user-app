@@ -1,4 +1,4 @@
-// Signup.js
+/*// Signup.js
 import React, { useState } from 'react';
 //import { useHistory } from 'react-router-dom';
 
@@ -39,22 +39,29 @@ function Signup() {
     // Handle any network or server-related errors here.
   }
 };
+
   return (
     <div>
-      <h2>Sign Up</h2>
+      <h2>Create a New User</h2>
       <form onSubmit={handleSignup}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div>
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
         <button type="submit">Sign Up</button>
       </form>
     </div>
@@ -62,3 +69,5 @@ function Signup() {
 }
 
 export default Signup;
+*/
+

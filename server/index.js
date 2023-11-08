@@ -37,7 +37,7 @@ app.get('/locations', (req, res) => {
 });
 
 //make a post for creating new user
-app .post('/signup', (req, res) => {
+app.post('/signup', (req, res) => {
   const { username, password } = req.body;
   connection.query(
     'INSERT INTO user (username, password) VALUES (?, ?)',
@@ -48,6 +48,9 @@ app .post('/signup', (req, res) => {
         return res.status(500).json({ error: 'An error occurred while inserting data into the database' });
       }
       res.status(201).json({ message: 'User registered successfully' });
+      // You can redirect the user to a different page or display a success message here. 
+      history.push('/main'); // Redirect to the MainUserPage
+
     }
   );
 });
@@ -56,41 +59,3 @@ app .post('/signup', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
-
-
-/*async function main () {
-
-    const connection = await mysql2.createConnection({
-      host:'localhost', 
-      user: 'root', 
-      password: 'LEAHmae185!!!' ,  
-      database: 'consumerdb'
-    });
-
-    app.get('/locations', async (req,res) => {
-      const [rows, field] = await connection.execute ('SELECT  FROM `locations`');
-      res.send(rows)
-    });
-    
-    app.post('/signup', async (req, res) => {
-        const { username, password } = req.body;
-      
-        // Hash the password
-        //const hashedPassword = await bcrypt.hash(password, 10);
-      
-        // Save user data to the database
-        try {
-          const [result] = await connection.query(
-            'INSERT INTO user (username, password) VALUES (?, ?)',
-            [username, hashedPassword]
-          );
-          res.status(201).json({ message: 'User registered successfully' });
-        } catch (error) {
-          console.error(error);
-          res.status(500).json({ error: 'Registration failed' });
-        }
-      });
-      
-};
-*/
-

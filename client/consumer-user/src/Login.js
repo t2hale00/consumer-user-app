@@ -1,4 +1,4 @@
-// SignIn.js
+/*// SignIn.js
 import React, { useState } from 'react';
 
 function SignIn() {
@@ -57,3 +57,29 @@ function SignIn() {
 }
 
 export default SignIn;
+*/
+import React from 'react'
+
+function Login() {
+  return (
+    <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
+      <div className='bg-white p-3 rounded w-25'>
+        <form action=''>
+          <div className='mb-3'>
+            <label htmlFor="email"><strong>Email</strong></label>
+            <input type="email" placeholder=' Enter email' />
+          </div>
+          <div className='mb-3'>
+            <label htmlFor="password"><strong>Password</strong></label>
+            <input type="password" placeholder=' Enter password' />
+          </div>
+          <button className='btn btn-success'>Log in</button>
+          <p></p>
+          <button className='btn btn-default border'>Create Account</button>
+        </form>
+      </div>
+    </div>
+  )
+}
+
+export default Login;
