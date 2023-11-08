@@ -36,6 +36,22 @@ app.get('/locations', (req, res) => {
   });
 });
 
+//make a post for creating new user
+app .post('/signup', (req, res) => {
+  const { username, password } = req.body;
+  connection.query(
+    'INSERT INTO user (username, password) VALUES (?, ?)',
+    [username, password],
+    (err, results, fields) => {
+      if (err) {
+        console.error('Error executing the query:', err);
+        return res.status(500).json({ error: 'An error occurred while inserting data into the database' });
+      }
+      res.status(201).json({ message: 'User registered successfully' });
+    }
+  );
+});
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
