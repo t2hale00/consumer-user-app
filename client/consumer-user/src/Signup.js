@@ -1,5 +1,6 @@
 // Signup.js
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function Signup() {
   const [username, setUsername] = useState('');
@@ -26,6 +27,7 @@ function Signup() {
       // User registration was successful
       console.log('User registered successfully');
       // You can redirect the user to a different page or display a success message here.
+      //history.push('/main'); // Redirect to the MainUserPage
     } else {
       // User registration failed
       const data = await response.json();
